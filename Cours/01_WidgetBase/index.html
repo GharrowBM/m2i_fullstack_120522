@@ -37,13 +37,24 @@
         <input @keyup.enter="logKey($event)" @input="inputLog()" type="text">
         
         <br>
+        
+            Prenom en OW Databinding : <input type="text"@input="editPrenom($event)">
 
+        <br>
         <!-- Pour réaliser du Two-Way Databinding, Vue nous propose l'utilisation de v-model. 
             Via cette directive, on a notre valeur d'input modifiée automatiquement depuis le JS, et en contrepartie, 
             toute modification dans l'HTML va aussi modifier la valeur de la variable dans notre JS  -->
+
             
-        <!-- <input type="text" :value="prenom" @input="editPrenom($event)"> -->
-            <input type="text" v-model="prenom">
+            
+            <!-- <input type="text" :value="prenom" @input="editPrenom($event)"> -->
+        Prenom en TW Databindging : <input type="text" v-model="prenom">
+
+            <br>
+
+            {{ prenom }}
+
+            <br>
 
         <!-- Si l'on veut, on peut déclencher les méthodes de notre JS depuis l'HTML 
             via l'utilisation de la directive v-on, dont on peut simplifier l'écriture avec '@'  -->
@@ -74,7 +85,7 @@
                     // via l'utilisation du mot-clé this
 
                     this.message = "J'ai eu un nombre aléatoire !"
-                    
+                    this.prenom = "Albert"
                     
                     this.nombre = Math.round(Math.random() * 6)
                 },
