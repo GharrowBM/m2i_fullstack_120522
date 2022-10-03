@@ -49,10 +49,11 @@
             
             <!-- <input type="text" :value="prenom" @input="editPrenom($event)"> -->
         Prenom en TW Databindging : <input type="text" v-model="prenom">
-
+        <br>
+            Nom en TW Databinding : <input type="text" v-model="nom">
             <br>
 
-            {{ prenom }}
+            {{ nomComplet }}
 
             <br>
 
@@ -60,6 +61,11 @@
             via l'utilisation de la directive v-on, dont on peut simplifier l'écriture avec '@'  -->
         <!-- <button v-on:click="getRandNumber()">Nombre Aleatoire</button> -->
         <button @click="getRandNumber()">Nombre Aleatoire</button>
+
+        <br>
+
+            <!-- <input type="text" :value="prenom" @input="editPrenom($event)"> -->
+
     </div>
 
     <script>
@@ -72,6 +78,7 @@
                     message: 'Hello world !',
                     nombre: 0,
                     prenom: "",
+                    nom : "",
                     imageURL: 'https://i-reg.unimedias.fr/sites/art-de-vivre/files/styles/recipe/public/r94-gateau-cremeux-chocolat-entremets_ss.jpg?auto=compress%2Cformat&crop=faces%2Cedges&cs=srgb&fit=crop&h=500&w=393'
                 }
             },
@@ -80,7 +87,6 @@
             // qui possède comme valeur un nouvel objet contenant les méthodes
             methods: {
                 getRandNumber() {
-
                     // Au sein d'une méthode, on peut modifier nos variables contenues dans data() 
                     // via l'utilisation du mot-clé this
 
@@ -97,6 +103,27 @@
                 },
                 editPrenom(e) {
                     this.prenom = e.target.value
+                }
+            },
+            computed: {
+                // Computed sert à créer des 'variables' qui dépendent d'autre variables (contenues par exemple dans notre section data())
+                // Elles seront utilisées dans notre HTML simplement en utilisant leur nom, et non en appellant la méthode que l'on va créer 
+                // Pour fonctionner, une méthode computed doit retourner une valeur
+
+                // Il faut, pour créer une propriété computed, que la variable de base n'existe pas
+                nomComplet() {
+                    return this.prenom + " " + this.nom
+                }
+            },
+            watch: {
+                // Enfin, il est possible d'utiliser ce qui s'appelle des watchers
+                // Les watchers doivent avoir le nom d'une propriété existante dans notre retour de data
+                // De la sorte, à chaque modification de la valeur de cette variable, le watcher va être executé
+                // Il permet, si on le souhaite, de récupérer en premier paramètre la nouvelle valeur, et en second paramètre l'ancienne
+                prenom(value, oldValue) {
+                    console.log("Nouvelle valeur : " + value)
+                    console.log("Ancienne valeur : " + oldValue)
+                    console.log('Prenom est modifié !')
                 }
             }
         }).mount('#app')
