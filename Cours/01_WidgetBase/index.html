@@ -5,35 +5,61 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
     <title>Exemples Widgets</title>
 </head>
 
 <body>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 
-    <div id="app" class="container">
-        <div class="row p-2 my-2">
-            {{ message }}
-        </div>
+    <div id="app">
+        <!-- Pour afficher en tant que texte la valeur d'une variable, 
+            on utilise les strings interpolés -->
+
+        {{ message }}
+
+        <!-- Pour lier une variable avec un attribut de balise HTML, on utilise la directive v-bind, 
+            dont la version raccourcie est simplement ':' -->
+
+            <br>
+
+        <!-- <img v-bind:src="imageURL" alt="" height="200"> -->
+        <img :src="imageURL" alt="Image de gâteau" height="200">
+
+            <br>
+
+        <!-- On peut aussi, via les strings interpolés, choisir d'afficher directement le retour d'une méthode -->
+        <b>Nombre aléatoire : </b> {{ getRandNumber() }}
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
-        crossorigin="anonymous"></script>
     <script>
         const { createApp } = Vue
 
         createApp({
+            // L'objet de création d'application peut contenir des variables dans son objet de retour de data()
             data() {
                 return {
-                    message: 'Hello Vue!'
+                    message: 'Hello world !',
+                    imageURL: 'https://i-reg.unimedias.fr/sites/art-de-vivre/files/styles/recipe/public/r94-gateau-cremeux-chocolat-entremets_ss.jpg?auto=compress%2Cformat&crop=faces%2Cedges&cs=srgb&fit=crop&h=500&w=393'
+                }
+            },
+
+            // L'objet de création d'application peut aussi contenir des fonctionnalités dans sa propriété methods, 
+            // qui possède comme valeur un nouvel objet contenant les méthodes
+            methods: {
+                getRandNumber() {
+
+                    // Au sein d'une méthode, on peut modifier nos variables contenues dans data() 
+                    // via l'utilisation du mot-clé this
+
+                    this.message = "J'ai eu un nombre aléatoire !"
+                    
+                    
+                    return Math.round(Math.random() * 6)
                 }
             }
         }).mount('#app')
     </script>
+
 </body>
 
 </html>
