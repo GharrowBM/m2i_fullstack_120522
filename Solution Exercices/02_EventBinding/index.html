@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <title>Examples</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row my-3">
+            <div class="col-12 col-md-4 offset-md-4 rounded p-2 bg-dark text-white" id="app">
+                <h6 class="display-6">Event Binding</h6>
+                <hr>
+                <div class="text-center mb-3">
+                    <button class="btn btn-outline-light" v-on:click="rollDice">Lancer le dé</button>
+                </div>
+                <hr>
+                <div class="mb-3 mx-2">
+                    <div class="row mb-2">
+                        <div class="col-auto">
+                            <label for="username" class="form-label">Username :</label>
+                        </div>
+                        <div class="col">
+                            <input type="text" class="form-control" v-on:input="changeUsername">
+                        </div>
+                    </div>
+                    <p>Votre nom d'utilisateur est : <b>{{ username }}</b> </p>
+                </div>
+                <hr>
+                <div class="mb-3 mx-2">
+                    <div class="row mb-2">
+                        <div class="col-auto">
+                            <label for="username" class="form-label">Plat préféré :</label>
+                        </div>
+                        <div class="col">
+                            <input type="text" class="form-control" v-on:keyup.enter="changeFavRecipe">
+                        </div>
+                    </div>
+                    <p>Votre plat préféré est : <b>{{ favRecipe }}</b> </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+    <script src="https://unpkg.com/vue@3"></script>
+    <script src="./app.js"></script>
+</body>
+
+</html>
