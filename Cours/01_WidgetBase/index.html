@@ -28,7 +28,20 @@
             <br>
 
         <!-- On peut aussi, via les strings interpolés, choisir d'afficher directement le retour d'une méthode -->
-        <b>Nombre aléatoire : </b> {{ getRandNumber() }}
+        <b>Nombre aléatoire : </b> {{ nombre }}
+
+        <br>
+        
+        <!-- On peut, sur des évènement, ajouter des modificateurs, par exemple ne déclencher une méthode 
+            que si la touche ENTREE est levée -->
+        <input @keyup.enter="logKey($event)" @input="inputLog()" type="text">
+        
+        <br>
+
+        <!-- Si l'on veut, on peut déclencher les méthodes de notre JS depuis l'HTML 
+            via l'utilisation de la directive v-on, dont on peut simplifier l'écriture avec '@'  -->
+        <!-- <button v-on:click="getRandNumber()">Nombre Aleatoire</button> -->
+        <button @click="getRandNumber()">Nombre Aleatoire</button>
     </div>
 
     <script>
@@ -39,6 +52,7 @@
             data() {
                 return {
                     message: 'Hello world !',
+                    nombre: 0,
                     imageURL: 'https://i-reg.unimedias.fr/sites/art-de-vivre/files/styles/recipe/public/r94-gateau-cremeux-chocolat-entremets_ss.jpg?auto=compress%2Cformat&crop=faces%2Cedges&cs=srgb&fit=crop&h=500&w=393'
                 }
             },
@@ -54,7 +68,13 @@
                     this.message = "J'ai eu un nombre aléatoire !"
                     
                     
-                    return Math.round(Math.random() * 6)
+                    this.nombre = Math.round(Math.random() * 6)
+                },
+                logKey(e) {
+                    console.log(e.target.value)
+                },
+                inputLog() {
+                    console.log('Input !')
                 }
             }
         }).mount('#app')
