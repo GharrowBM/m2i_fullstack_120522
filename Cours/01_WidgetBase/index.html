@@ -38,6 +38,13 @@
         
         <br>
 
+        <!-- Pour réaliser du Two-Way Databinding, Vue nous propose l'utilisation de v-model. 
+            Via cette directive, on a notre valeur d'input modifiée automatiquement depuis le JS, et en contrepartie, 
+            toute modification dans l'HTML va aussi modifier la valeur de la variable dans notre JS  -->
+            
+        <!-- <input type="text" :value="prenom" @input="editPrenom($event)"> -->
+            <input type="text" v-model="prenom">
+
         <!-- Si l'on veut, on peut déclencher les méthodes de notre JS depuis l'HTML 
             via l'utilisation de la directive v-on, dont on peut simplifier l'écriture avec '@'  -->
         <!-- <button v-on:click="getRandNumber()">Nombre Aleatoire</button> -->
@@ -53,6 +60,7 @@
                 return {
                     message: 'Hello world !',
                     nombre: 0,
+                    prenom: "",
                     imageURL: 'https://i-reg.unimedias.fr/sites/art-de-vivre/files/styles/recipe/public/r94-gateau-cremeux-chocolat-entremets_ss.jpg?auto=compress%2Cformat&crop=faces%2Cedges&cs=srgb&fit=crop&h=500&w=393'
                 }
             },
@@ -75,6 +83,9 @@
                 },
                 inputLog() {
                     console.log('Input !')
+                },
+                editPrenom(e) {
+                    this.prenom = e.target.value
                 }
             }
         }).mount('#app')
