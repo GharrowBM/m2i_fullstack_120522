@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Exemples Widgets</title>
 </head>
 
@@ -57,6 +58,26 @@
 
             <br>
 
+            <!-- On peut rendre conditionnel la présence d'un ensemble de classe dans une balise HTML 
+                via l'utilisation de v-bind sur l'attribut class de la balise.
+                En paramètre de la directive (à droite du signe égal), on va avoir un objet permettant d'avoir une condition 
+                de présence de la ou des classe -->
+            <div :class="{'active': prenom === 'Bernard'}">
+                Ceci est ma DIV
+            </div>
+
+            <div :class="[prenom === 'Bernard' ? 'active' : '']">
+                Ceci est ma DIV en Ternaire
+            </div>
+
+            <!-- ON peut également utiliser v-bind sur l'attribut style, pour obtenir un 
+                style conditionnalisé dans notre élément HTML -->
+            <div :style="{'color': prenom === 'Bernard' ? 'yellow' : 'black'}">
+                Ceci est ma DIV pour le style
+            </div>
+
+
+
         <!-- Si l'on veut, on peut déclencher les méthodes de notre JS depuis l'HTML 
             via l'utilisation de la directive v-on, dont on peut simplifier l'écriture avec '@'  -->
         <!-- <button v-on:click="getRandNumber()">Nombre Aleatoire</button> -->
@@ -75,6 +96,7 @@
             // L'objet de création d'application peut contenir des variables dans son objet de retour de data()
             data() {
                 return {
+                    isActive: true,
                     message: 'Hello world !',
                     nombre: 0,
                     prenom: "",
