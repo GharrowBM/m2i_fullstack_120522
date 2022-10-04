@@ -87,6 +87,40 @@
 
             <!-- <input type="text" :value="prenom" @input="editPrenom($event)"> -->
 
+            <!-- Pour rendre conditionnel la présence d'un élément dans notre HTML, 
+                on utilise v-if et on lui donne en paramètre une condition -->
+            <div v-if="prenom === 'Bernard'">
+                Merci d'avoir entré Bernard !
+            </div>
+            <div v-else-if="prenom === 'Marie'">
+                Merci d'avoir entré Marie !
+            </div>
+            <div v-else>
+                Pas de prénom spécial...
+            </div>
+
+            <!-- Pour créer une série d'élément HTML en se basant sur une itération, on utilise v-for. 
+                On peut rendre statique le nombre d'élément à générer ou placer une variable après le mot-clé 'in' -->
+            <div v-for="n in 10" :key="n">
+                Ceci est une div !
+            </div>
+
+            <br>
+
+            <!-- Il est possible, via une syntaxe sous la forme d'un tuple, 
+                d'avoir à la fois l'élément en cours d'itération et son index. Ceci dans le but d'attribuer la valeur de la clé -->
+            <div v-for="(toy, index) in toys" :key="index">
+                {{ toy }}
+            </div>
+
+            <br>
+
+            <!-- Si l'on est en train d'itérer sur un tableau d'objet, alors on va pouvoir 
+                par la suite afficher ou traiter les propriétés de chaque objet itéré par la boucle v-for -->
+            <div v-for="(p, i) in people" :key="i">
+                    <span class="col">{{p.firstname}}</span> |
+                    <span class="col">{{p.lastname}}</span>
+            </div>
     </div>
 
     <script>
@@ -100,6 +134,21 @@
                     message: 'Hello world !',
                     nombre: 0,
                     prenom: "",
+                    toys: ['Balle', 'Souris en platique', 'Mesmerizer', 'Fouet Electrique', 'Nonos'],
+                    people: [
+                        {
+                            firstname: "Albert",
+                            lastname: "Dupont"
+                        },
+                        {
+                            firstname: "John",
+                            lastname: "Smith"
+                        },
+                        {
+                            firstname: "Martha",
+                            lastname: "Lopez"
+                        }
+                    ],
                     nom : "",
                     imageURL: 'https://i-reg.unimedias.fr/sites/art-de-vivre/files/styles/recipe/public/r94-gateau-cremeux-chocolat-entremets_ss.jpg?auto=compress%2Cformat&crop=faces%2Cedges&cs=srgb&fit=crop&h=500&w=393'
                 }
