@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+        <link rel="stylesheet" href="style.css">
+    <title>Examples</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row my-3">
+            <div class="col-12 col-md-6 offset-md-3 rounded p-3 bg-dark text-white" id="app">
+                <h6 class="display-6">Boite Magique</h6>
+                <hr>
+                <div class="row">
+                    <div class="col">
+                        <div class="mb-3 row">
+                            <div class="col-3">
+                                <label for="box-color" class="form-label">Color: </label>
+                            </div>
+                            <div class="col">
+                                <input type="text" class="form-control" name="box-color" id="box-color" placeholder="red, blue, green, ..." v-model="boxColor">
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <div class="col-3">
+                                <label for="box-type" class="form-label">Shape: </label>
+                            </div>
+                            <div class="col">
+                                <select class="form-select" name="box-type" id="box-type" v-model="boxShape">
+                                    <option value="">Select a Shape</option>
+                                    <option>Circle</option>
+                                    <option>Square</option>
+                                    <option>Rectangle</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="d-flex justify-content-center">
+                            <div :style="boxStyles" :class="boxClasses"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+    <script src="https://unpkg.com/vue@3"></script>
+    <script src="./app.js"></script>
+</body>
+
+</html>
