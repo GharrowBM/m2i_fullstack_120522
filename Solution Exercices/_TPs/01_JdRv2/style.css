@@ -1,0 +1,38 @@
+.healthbar, .manabar {
+    height: 30px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 15px;
+    background-color: rgba(128, 128, 128, 0.5);
+    margin-bottom: 5px;
+}
+
+.healthbar-value, .manabar-value {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+}
+
+.healthbar-value {
+    background-color: rgb(43, 186, 43);
+}
+
+.manabar-value {
+    background-color: rgb(43, 81, 186);
+}
+
+.healthbar-text, .manabar-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.command-button {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: black;
+}
