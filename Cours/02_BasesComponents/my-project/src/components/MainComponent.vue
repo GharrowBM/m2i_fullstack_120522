@@ -9,7 +9,11 @@
         et utiliser son attribut is auquel on lie une variable. Cette variable sera 
         le nom du composant qui prendra la place que l'on lui a 
         prévu (l'emplacement de <component></component>) -->
-    <component :is="selectedComponent"></component>
+    
+        <!--  Keep alive sert à conserver les changements de variables qui pourraient avoir eu lieu dans notre composant -->
+    <keep-alive> 
+        <component :is="selectedComponent"></component>
+    </keep-alive>
 </template>
 
 <script>
