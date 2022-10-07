@@ -2,6 +2,7 @@
 
 import { createRouter, createWebHistory } from "vue-router";
 import HomeView  from './views/HomeView.vue'
+// import AboutView from './views/AboutView.vue'
 
 // Pour créer notre router, il nous faut créer une variable qui sera le résultat de notre fonction
 // de création de router 
@@ -19,7 +20,8 @@ const router = createRouter({
 
             // Le composant (ou idéalement la vue) auquel ce chemin va mener
             component: HomeView
-        }
+        },
+        {path: '/about', component:() => import('./views/AboutView.vue')}
     ]
 })
 
