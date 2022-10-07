@@ -21,7 +21,11 @@ const router = createRouter({
             // Le composant (ou idéalement la vue) auquel ce chemin va mener
             component: HomeView
         },
-        {path: '/about', component:() => import('./views/AboutView.vue')}
+        {path: '/about', component:() => import('./views/AboutView.vue')},
+
+        // On peut aussi avoir des paramètres de route en usant de la syntaxe
+        // ci-dessous (ici on va stocker le paramètre dans 'name')
+        {path: '/details/:name', component: () => import('./views/DetailsView.vue')}
     ]
 })
 

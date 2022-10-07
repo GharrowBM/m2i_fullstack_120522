@@ -13,6 +13,9 @@
     <li>
       <router-link to="/about">About</router-link>
     </li>
+    <!-- <li v-for="(l, i) in myLinks" :key="i">
+      <router-link :to="l.link">{{l.name}}</router-link>
+    </li> -->
   </ul>
   <!-- Pour ajouter l'injection à un emplacement de notre page des routes, 
     il nous faut ajouter la balise router-view -->
@@ -23,6 +26,20 @@
 export default {
   name: 'App',
   components: {
+  },
+  data() {
+    return {
+      // myLinks: [
+      //   {
+      //     link: '/',
+      //     name: 'Home'
+      //   },
+      //   {
+      //     link: '/about',
+      //     name: 'About'
+      //   }
+      // ]
+    }
   }
 }
 </script>
